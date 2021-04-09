@@ -1,3 +1,12 @@
 const jq = require("node-jq");
 
-jq.run(".", { foo: "bar" }, { input: "json" }).then(console.log);
+const filter = ".";
+
+const options = {
+  output: "pretty",
+  slurp: false,
+};
+
+jq.run(filter, `./package.json`, options)
+  .then(console.log)
+  .catch(console.error);
